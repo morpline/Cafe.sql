@@ -1,4 +1,7 @@
 import psycopg2 as pg2
+import os
+import dotenv
+dotenv.load_dotenv()
 inputs = {}
 def take_inputs (data_name):
     inputs[data_name]=input(f"Input {data_name} - ")

@@ -16,7 +16,12 @@ while(not donewithproducts):
         else:
             print("Not a number, try again")
 products+="}"
-conn = pg2.connect(database='type3',user="postgres",password="ethan",port=19026)
+
+import os
+import dotenv
+dotenv.load_dotenv()
+
+conn = pg2.connect(os.environ.get("database"),os.environ.get("username"),os.environ.get("password"),os.environ.get("port"))
 cur = conn.cursor()
 cur.execute("SELECT COUNT(*) FROM cafe.discounts")
 count = cur.fetchone()[0]

@@ -2,7 +2,11 @@ import psycopg2 as pg2
 name = input("Full name? - ")
 phone = input("Phone Number? - ")
 email = input("Email Address? - ")
-conn = pg2.connect(database='type3',user="postgres",password="ethan",port=19026)
+import os
+import dotenv
+dotenv.load_dotenv()
+
+conn = pg2.connect(os.environ.get("database"),os.environ.get("username"),os.environ.get("password"),os.environ.get("port"))
 cur = conn.cursor()
 cur.execute("SELECT COUNT(*) FROM cafe.customers")
 count = cur.fetchone()[0]

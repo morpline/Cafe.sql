@@ -1,7 +1,9 @@
 import psycopg2 as pg2
 import os
-import sys
-conn = pg2.connect(database='type3',user="postgres",password="ethan",port=19026)
+import dotenv
+dotenv.load_dotenv()
+
+conn = pg2.connect(os.environ.get("database"),os.environ.get("username"),os.environ.get("password"),os.environ.get("port"))
 cur = conn.cursor()
 with open("./cafe-setup.sql") as sql:
     s = sql.read()
