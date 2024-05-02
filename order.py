@@ -30,7 +30,7 @@ while(not donewithproducts):
 pstring+="}"
 print(pstring, products)
 cost = 0
-conn = pg2.connect(database='type3',user="postgres",password="ethan",port=19026)
+conn = pg2.connect(os.environ.get("database"),os.environ.get("username"),os.environ.get("password"),os.environ.get("port"))
 cur = conn.cursor()
 discounts = []
 dstring = "{"
